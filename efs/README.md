@@ -1,2 +1,12 @@
+# ami requirements
+
+```
+sudo pip3 install botocore
+```
+
+# debug
+
+```
 journalctl -f -u amazon-ecs-volume-plugin
-tail -f /var/log/ecs/ecs-volume-plugin.log
+```
+
