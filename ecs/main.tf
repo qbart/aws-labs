@@ -55,10 +55,10 @@ module "lb" {
 }
 
 module "ecs_cluster" {
-  # source  = "Selleo/backend/aws//modules/ecs-cluster"
-  # version = "0.3.0"
+  source  = "Selleo/backend/aws//modules/ecs-cluster"
+  version = "0.3.0"
 
-  source = "/home/bart/selleo/terraform-aws-backend/modules/ecs-cluster"
+  # source = "/home/bart/selleo/terraform-aws-backend/modules/ecs-cluster"
 
   name_prefix        = local.name
   region             = "eu-central-1"
@@ -74,17 +74,5 @@ module "ecs_cluster" {
     max_size         = 2
     desired_capacity = 1
   }
-
-  #cloudinit_parts = [
-  #  {
-  #    filename     = "test.cfg"
-  #    content_type = "text/cloud-config"
-  #    content      = <<SH
-  ##!/usr/bin/env bash
-
-  #echo "Configure ECS cluster 2"
-  #SH
-  #  }
-  #]
 }
 
