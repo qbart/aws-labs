@@ -2,21 +2,22 @@ resource "aws_ecs_task_definition" "this" {
   family = local.name
 
   requires_compatibilities = ["EXTERNAL"]
+  network_mode             = "awsvpc"
 
   container_definitions = jsonencode(
     [
       {
-        essential         = true,
-        memoryReservation = 256,
-        cpu               = 256,
-        name              = local.name
-        image             = "qbart/go-http-server-noop:latest",
-        mountPoints       = [],
-        volumesFrom       = [],
+        essential   = true,
+        memory      = 256,
+        cpu         = 256,
+        name        = local.name
+        image       = "qbart/go-http-server-noop:latest",
+        mountPoints = [],
+        volumesFrom = [],
         portMappings = [
           {
             containerPort = 5000,
-            hostPort      = 0,
+            hostPort      = 5000, # ports must match
             protocol      = "tcp",
           },
         ],
